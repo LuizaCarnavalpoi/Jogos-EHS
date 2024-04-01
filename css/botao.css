@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../Img/SIPATMA\ \(2\).png');
+    background-size: 86%; /* Garante que a imagem cubra todo o corpo */
+    background-position: center; /* Mantém a imagem centralizada */
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.glow-on-hover {
+    width: 97%; /* Definindo a largura do botão como 90% da largura do contêiner */
+    max-width: 200px; /* Definindo uma largura máxima para o botão */
+    height: 80px; /* Definindo a altura do botão */
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 50px; /* Ajuste conforme necessário */
+    margin: -5 auto; /* Centralizando o botão horizontalmente */
+    font-size: 35px; /* Ajuste este valor conforme necessário */
+}
+
+
+.glow-on-hover:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@media screen and (max-width: 768px) {
+    .glow-on-hover {
+        width: 90%;
+    }
+}
